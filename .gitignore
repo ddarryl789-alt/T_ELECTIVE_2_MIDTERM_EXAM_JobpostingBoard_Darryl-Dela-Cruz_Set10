@@ -56,3 +56,5 @@ CodeCoverage/
 TestResult.xml
 nunit-*.xml
 /.idea/
+/.vs
+/jobposingboard_Dela Cruz/.vs/jobposingboard_Dela Cruz
