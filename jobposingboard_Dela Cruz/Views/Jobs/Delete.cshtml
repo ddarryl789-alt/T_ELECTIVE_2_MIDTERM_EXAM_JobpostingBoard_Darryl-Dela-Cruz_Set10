@@ -1,0 +1,44 @@
+﻿@model jobpostingboard_Dela_Cruz.Models.Job
+
+@{
+    ViewData["Title"] = "Delete Job";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-body">
+
+            <h2>Delete Job</h2>
+
+            <p>Are you sure you want to delete this job?</p>
+
+            <h4>@Model.Title</h4>
+
+            <p>@Model.Company</p>
+
+            <form asp-action="Delete"
+                  method="post">
+
+                <input type="hidden"
+                       name="id"
+                       value="@Model.Id" />
+
+                <button type="submit"
+                        class="btn btn-danger">
+                    Delete
+                </button>
+
+                <a asp-action="Index"
+                   class="btn btn-secondary">
+                    Cancel
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

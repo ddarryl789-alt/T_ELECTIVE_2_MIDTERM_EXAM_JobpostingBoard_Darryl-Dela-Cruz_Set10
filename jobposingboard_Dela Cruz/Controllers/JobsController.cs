@@ -16,6 +16,7 @@ namespace jobpostingboard_Dela_Cruz.Controllers
             _repository = repository;
         }
 
+        // JOB LIST
         public IActionResult Index(string? search)
         {
             var jobs = _repository.GetAll(search);
@@ -23,12 +24,14 @@ namespace jobpostingboard_Dela_Cruz.Controllers
             return View(jobs);
         }
 
+        // CREATE - GET
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
+        // CREATE - POST
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(JobCreateDto model)
@@ -50,6 +53,19 @@ namespace jobpostingboard_Dela_Cruz.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        // DETAILS
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            var job = _repository.GetById(id);
+
+            if (job == null)
+                return NotFound();
+
+            return View(job);
+        }
+
+        // EDIT - GET
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -71,6 +87,7 @@ namespace jobpostingboard_Dela_Cruz.Controllers
             return View(model);
         }
 
+        // EDIT - POST
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(JobUpdateDto model)
@@ -94,15 +111,29 @@ namespace jobpostingboard_Dela_Cruz.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        // DELETE - GET
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var job = _repository.GetById(id);
+
+            if (job == null)
+                return NotFound();
+
+            return View(job);
+        }
+
+        // DELETE - POST
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Delete(int id)
+        public IActionResult DeleteConfirmed(int id)
         {
             _repository.Delete(id);
 
             return RedirectToAction(nameof(Index));
         }
 
+        // CLOSE JOB
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Close(int id)

@@ -1,0 +1,52 @@
+﻿@model jobpostingboard_Dela_Cruz.Models.Job
+
+@{
+    ViewData["Title"] = "Job Details";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-body">
+
+            <h2>@Model.Title</h2>
+
+            <hr />
+
+            <p>
+                <strong>Company:</strong>
+                @Model.Company
+            </p>
+
+            <p>
+                <strong>Location:</strong>
+                @Model.Location
+            </p>
+
+            <p>
+                <strong>Job Type:</strong>
+                @Model.JobType
+            </p>
+
+            <p>
+                <strong>Description:</strong>
+            </p>
+
+            <p>@Model.Description</p>
+
+            <p>
+                <strong>Date Posted:</strong>
+                @Model.DatePosted
+            </p>
+
+            <a asp-action="Index"
+               class="btn btn-secondary">
+                Back
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
